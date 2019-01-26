@@ -18,7 +18,13 @@ try to explain my motives and as to why and how I did
 my setup the way I did in the future. But for now I 
 hope that these few files could help you out.
 
+This UI is built for mobile phones in mind and so the
+desktop version might look odd at times. Unfortunately
+for some reason my custom:weather-card wont load on any
+browser on my pc (my iphone works fine). Sorry for that.
+
 history:
+
 v. 26.01.2019: 
   - ui-lovelace.yaml, themes.yaml and image files added 
     to repository
