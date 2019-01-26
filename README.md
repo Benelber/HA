@@ -28,3 +28,6 @@ history:
 v. 26.01.2019: 
   - ui-lovelace.yaml, themes.yaml and image files added 
     to repository
+
+
+FOR SCREENSHOTS PLEASE REFER TO THE SCREENSHOTS_DESKTOP or SCREENSHOTS_MOBILE FOLDERS!!
