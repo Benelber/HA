@@ -22,7 +22,7 @@ resources:
     type: module
   - url: /local/card-tools/card-tools.js?v=297fcc
     type: js
-  - url: /local/card-tools/card-modder.js?v=03a767
+  - url: /local/card-tools/card-modder.js?v=70344a
     type: js
   - url: /local/custom-lovelace/weather-card/weather-card.js?v=1.2.0
     type: module
@@ -35,15 +35,24 @@ background: center / cover no-repeat url("/local/images/grey-gradient.png") fixe
 views:
   - badges: []
     cards:
-      - type: 'custom:card-modder'
-        style:
-          border-radius: 20px
-        card:
-          entities:
-            - entity: device_tracker.iphone_jimmy
-            - entity: device_tracker.iphone_van_steph
-          show_name: false
-          type: glance
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:card-modder'
+            style:
+              border-radius: 20px
+            card:
+              entity: device_tracker.iphone_van_steph
+              type: picture-entity
+              image: /local/images/stephanie_small.png
+              name: Stephanie
+          - type: 'custom:card-modder'
+            style:
+              border-radius: 20px
+            card:
+              entity: device_tracker.iphone_jimmy
+              type: picture-entity
+              image: /local/images/jimmy_small.png
+              name: Jimmy
       - type: 'custom:card-modder'
         style:
           border-radius: 20px
@@ -77,7 +86,7 @@ views:
               aspect_ratio: 16:9
               tap_action:
                 action: navigate
-                navigation_path: /lovelace/images/security
+                navigation_path: /lovelace/security
         - type: horizontal-stack
           cards:
           - type: 'custom:card-modder'
@@ -263,7 +272,7 @@ views:
               image: /local/images/waze.png
               tap_action:
                 action: navigate
-                navigation_path: /lovelace/waze
+                navigation_path: /lovelace/links
               style:
                 left: 50%
                 top: 50%
@@ -319,7 +328,7 @@ views:
             - entity: media_player.xbox_one
               icon: 'mdi:xbox'
             - entity: switch.waterkoker_2
-              icon: 'mdi:coffee-outline'
+              icon: 'mdi:cup-water'
             - entity: switch.afzuigkap_2
               icon: 'mdi:fan'
             - entity: switch.air_fryer_2
@@ -382,6 +391,12 @@ views:
             - entity: switch.droger
               icon: 'mdi:tumble-dryer'
             - entity: light.balkonlamp
+            - entity: switch.tradfri_outlet
+              icon: 'mdi:coffee-outline'
+              name: Cappumaker
+            - entity: switch.tradfri_outlet_2
+              icon: 'mdi:television'
+              name: Philips TV
           state_filter:
             - 'on'
             - 'unknown'
@@ -440,6 +455,8 @@ views:
                       icon: 'mdi:ceiling-light'
                       name: Plafond
                       type: 'custom:button-card'
+                      action: toggle
+                      long_press_action: more_info
                       style:
                         - height: 85px
                         - text-transform: none
@@ -454,6 +471,8 @@ views:
                       icon: 'mdi:ceiling-light'
                       name: Eettafel
                       type: 'custom:button-card'
+                      action: toggle
+                      long_press_action: more_info
                       style:
                         - height: 85px
                         - text-transform: none
@@ -467,6 +486,8 @@ views:
                       icon: 'mdi:lamp'
                       name: Tafel Lamp
                       type: 'custom:button-card'
+                      action: toggle
+                      long_press_action: more_info
                       style:
                         - height: 85px
                         - text-transform: none
@@ -480,6 +501,8 @@ views:
                       icon: 'mdi:floor-lamp'
                       name: Vloer Lamp
                       type: 'custom:button-card'
+                      action: toggle
+                      long_press_action: more_info
                       style:
                         - height: 85px
                         - text-transform: none
@@ -497,7 +520,8 @@ views:
                         - height: 85px
                         - text-transform: none
                         - font-size: 13px
-                      action: more_info
+                      action: toggle
+                      long_press_action: more_info
                       icon: 'mdi:led-off'
                       color: auto
                   - type: 'custom:card-modder'
@@ -506,7 +530,8 @@ views:
                     card:
                       entity: light.gateway_light_7811dcdef324
                       name: Xiaomi LED
-                      action: more_info
+                      action: toggle
+                      long_press_action: more_info
                       type: 'custom:button-card'
                       style:
                         - height: 85px
@@ -535,6 +560,8 @@ views:
                       name: Stephanie
                       icon: 'mdi:lamp'
                       type: 'custom:button-card'
+                      action: toggle
+                      long_press_action: more_info
                       style:
                         - height: 85px
                         - text-transform: none
@@ -548,6 +575,8 @@ views:
                       name: Jimmy
                       icon: 'mdi:lamp'
                       type: 'custom:button-card'
+                      action: toggle
+                      long_press_action: more_info
                       style:
                         - height: 85px
                         - text-transform: none
@@ -563,7 +592,8 @@ views:
                         - height: 85px
                         - text-transform: none
                         - font-size: 13px
-                      action: more_info
+                      action: toggle
+                      long_press_action: more_info
                       icon: 'mdi:led-off'
                       color: auto
                   - type: 'custom:button-card'
@@ -584,6 +614,8 @@ views:
                       icon: 'mdi:ceiling-light'
                       name: Plafond
                       type: 'custom:button-card'
+                      action: toggle
+                      long_press_action: more_info
                       style:
                         - height: 85px
                         - text-transform: none
@@ -600,7 +632,8 @@ views:
                         - text-transform: none
                         - font-size: 13px
                       type: 'custom:button-card'
-                      action: more_info
+                      action: toggle
+                      long_press_action: more_info
                       icon: 'mdi:led-off'
                       color: auto
                   - type: 'custom:button-card'
@@ -621,6 +654,8 @@ views:
                     card:
                       color: '#efca34'
                       entity: light.keuken_plafondlampen
+                      action: toggle
+                      long_press_action: more_info
                       icon: 'mdi:ceiling-light'
                       name: Plafond
                       style:
@@ -634,6 +669,8 @@ views:
                     card:
                       color: '#efca34'
                       entity: light.keukenspots_2
+                      action: toggle
+                      long_press_action: more_info
                       name: Spotjes
                       icon: 'mdi:track-light'
                       style:
@@ -647,6 +684,8 @@ views:
                     card:
                       color: '#efca34'
                       entity: light.bijkeukenlamp
+                      action: toggle
+                      long_press_action: more_info
                       icon: 'mdi:ceiling-light'
                       name: Bijkeuken
                       type: 'custom:button-card'
@@ -671,6 +710,8 @@ views:
                       color: '#efca34'
                       entity: switch.kh01cn
                       icon: 'mdi:ceiling-light'
+                      action: toggle
+                      long_press_action: more_info
                       name: Douche
                       type: 'custom:button-card'
                       style:
@@ -684,6 +725,8 @@ views:
                       color: '#efca34'
                       entity: light.toiletlamp
                       icon: 'mdi:ceiling-light'
+                      action: toggle
+                      long_press_action: more_info
                       name: Toilet
                       type: 'custom:button-card'
                       style:
@@ -697,6 +740,8 @@ views:
                       color: '#efca34'
                       entity: light.balkonlamp
                       name: Balkon
+                      action: toggle
+                      long_press_action: more_info
                       icon: 'mdi:lightbulb'
                       type: 'custom:button-card'
                       style:
@@ -712,65 +757,74 @@ views:
                       icon: 'mdi:ceiling-light'
                       name: Berging
                       type: 'custom:button-card'
+                      action: toggle
+                      long_press_action: more_info
                       style:
                         - height: 85px
                         - text-transform: none
                         - font-size: 13px
                 type: horizontal-stack
             type: vertical-stack
-        type: vertical-stack
   # Navigation Bar
-      - type: horizontal-stack
-        cards:
-          - type: 'custom:button-card'
-            color_type: blank-card
           - type: 'custom:card-modder'
             style:
-              border-radius: 20px
+              --paper-card-background-color: 'rgba(11, 11, 11, 0.40)'
+              height: 10px
             card:
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/home            
-              icon: 'mdi:arrow-left-bold'
-              name: Back
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:card-modder'
-            style:
-              border-radius: 20px
-            card:
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/home   
-              icon: 'mdi:home'
-              name: Home
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:card-modder'
-            style:
-              border-radius: 20px
-            card:
-              name: Next
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/scenes   
-              icon: 'mdi:arrow-right-bold'
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:button-card'
-            color_type: blank-card
+              content: ' '
+              type: markdown
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                color_type: blank-card
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px
+                card:
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/home            
+                  icon: 'mdi:arrow-left-bold'
+                  name: Back
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px
+                card:
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/home   
+                  icon: 'mdi:home'
+                  name: Home
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px
+                card:
+                  name: Next
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/scenes   
+                  icon: 'mdi:arrow-right-bold'
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:button-card'
+                color_type: blank-card
+        type: vertical-stack
     icon: 'mdi:lightbulb'
     path: 'lights'
     title: Alle Verlichting
@@ -795,7 +849,7 @@ views:
                         card:
                           name: Koken
                           style:
-                            - height: 45px
+                            - height: 55px
                             - text-transform: none
                             - font-size: 13px
                           type: 'custom:button-card'
@@ -811,7 +865,7 @@ views:
                         card:
                           name: Avond Verlichting
                           style:
-                            - height: 45px
+                            - height: 55px
                             - text-transform: none
                             - font-size: 13px
                           type: 'custom:button-card'
@@ -827,7 +881,7 @@ views:
                         card:
                           name: Nachtverlichting
                           style:
-                            - height: 45px
+                            - height: 55px
                             - text-transform: none
                             - font-size: 13px
                           type: 'custom:button-card'
@@ -845,7 +899,7 @@ views:
                         card:
                           name: Klaar met Koken
                           style:
-                            - height: 45px
+                            - height: 55px
                             - text-transform: none
                             - font-size: 13px
                           type: 'custom:button-card'
@@ -859,9 +913,9 @@ views:
                         style:
                           border-radius: 20px
                         card:
-                          name: Wassen
+                          name: Naar Bed Gaan
                           style:
-                            - height: 45px
+                            - height: 55px
                             - text-transform: none
                             - font-size: 13px
                           type: 'custom:button-card'
@@ -870,14 +924,14 @@ views:
                             domain: scene
                             action: turn_on
                             data:
-                              entity_id: scene.wassen
+                              entity_id: scene.naarbed
                       - type: 'custom:card-modder'
                         style:
                           border-radius: 20px
                         card:
                           name: Schoonmaken
                           style:
-                            - height: 45px
+                            - height: 55px
                             - text-transform: none
                             - font-size: 13px
                           type: 'custom:button-card'
@@ -895,9 +949,25 @@ views:
                         style:
                           border-radius: 20px
                         card:
+                          name: Wassen
+                          style:
+                            - height: 55px
+                            - text-transform: none
+                            - font-size: 13px
+                          type: 'custom:button-card'
+                          action: service
+                          service:
+                            domain: scene
+                            action: turn_on
+                            data:
+                              entity_id: scene.wassen
+                      - type: 'custom:card-modder'
+                        style:
+                          border-radius: 20px
+                        card:
                           name: Dag Verlichting
                           style:
-                            - height: 45px
+                            - height: 55px
                             - text-transform: none
                             - font-size: 13px
                           type: 'custom:button-card'
@@ -907,22 +977,6 @@ views:
                             action: turn_on
                             data:
                               entity_id: scene.dagverlichting
-                      - type: 'custom:card-modder'
-                        style:
-                          border-radius: 20px
-                        card:
-                          name: Welterusten
-                          style:
-                            - height: 45px
-                            - text-transform: none
-                            - font-size: 13px
-                          type: 'custom:button-card'
-                          action: service
-                          service:
-                            domain: scene
-                            action: turn_on
-                            data:
-                              entity_id: scene.welterusten
                       - type: 'custom:button-card'
                         color_type: blank-card
                     type: horizontal-stack
@@ -933,7 +987,7 @@ views:
                         card:
                           name: Klaar met Wassen
                           style:
-                            - height: 45px
+                            - height: 55px
                             - text-transform: none
                             - font-size: 13px
                           type: 'custom:button-card'
@@ -943,8 +997,22 @@ views:
                             action: turn_on
                             data:
                               entity_id: scene.klaar_met_wassen
-                      - type: 'custom:button-card'
-                        color_type: blank-card
+                      - type: 'custom:card-modder'
+                        style:
+                          border-radius: 20px
+                        card:
+                          name: Welterusten
+                          style:
+                            - height: 55px
+                            - text-transform: none
+                            - font-size: 13px
+                          type: 'custom:button-card'
+                          action: service
+                          service:
+                            domain: scene
+                            action: turn_on
+                            data:
+                              entity_id: scene.welterusten
                       - type: 'custom:button-card'
                         color_type: blank-card
                     type: horizontal-stack
@@ -1087,6 +1155,124 @@ views:
                 style:
                   --paper-card-background-color: 'rgba(11, 11, 11, 0.40)'
                 card:
+                  content: '### Slaapkamer Scenes'
+                  type: markdown
+              - cards:
+                  - type: 'custom:card-modder'
+                    style:
+                      border-radius: 20px
+                    card:
+                      name: All ON
+                      style:
+                        - height: 85px
+                        - text-transform: none
+                        - font-size: 13px
+                      type: 'custom:button-card'
+                      icon: 'mdi:spotlight'
+                      action: service
+                      service:
+                        domain: scene
+                        action: turn_on
+                        data:
+                          entity_id: scene.slaapkamer_normal
+                  - type: 'custom:card-modder'
+                    style:
+                      border-radius: 20px
+                    card:
+                      name: Day
+                      style:
+                        - height: 85px
+                        - text-transform: none
+                        - font-size: 13px
+                      type: 'custom:button-card'
+                      icon: 'mdi:weather-sunset-up'
+                      action: service
+                      service:
+                        domain: scene
+                        action: turn_on
+                        data:
+                          entity_id: scene.slaapkamer_dim
+                  - type: 'custom:card-modder'
+                    style:
+                      border-radius: 20px                    
+                    card:
+                      name: Night
+                      style:
+                        - height: 85px
+                        - text-transform: none
+                        - font-size: 13px
+                      type: 'custom:button-card'
+                      icon: 'mdi:weather-sunset-down'
+                      action: service
+                      service:
+                        domain: scene
+                        action: turn_on
+                        data:
+                          entity_id: scene.naarbed
+                  - type: 'custom:card-modder'
+                    style:
+                      border-radius: 20px                   
+                    card:
+                      name: Romantic
+                      style:
+                        - height: 85px
+                        - text-transform: none
+                        - font-size: 13px
+                      type: 'custom:button-card'
+                      icon: 'mdi:heart-multiple'
+                      action: service
+                      service:
+                        domain: scene
+                        action: turn_on
+                        data:
+                          entity_id: scene.slaapkamer_romantic
+                type: horizontal-stack
+              - cards:
+                  - type: 'custom:card-modder'
+                    style:
+                      border-radius: 20px                   
+                    card:
+                      name: Movie
+                      style:
+                        - height: 85px
+                        - text-transform: none
+                        - font-size: 13px
+                      type: 'custom:button-card'
+                      icon: 'mdi:movie'
+                      action: service
+                      service:
+                        domain: scene
+                        action: turn_on
+                        data:
+                          entity_id: scene.slaapkamer_movie
+                  - type: 'custom:card-modder'
+                    style:
+                      border-radius: 20px                   
+                    card:
+                      name: All OFF
+                      style:
+                        - height: 85px
+                        - text-transform: none
+                        - font-size: 13px
+                      type: 'custom:button-card'
+                      icon: 'mdi:sleep'
+                      action: service
+                      service:
+                        domain: scene
+                        action: turn_on
+                        data:
+                          entity_id: scene.slaapkamer_off
+                  - type: 'custom:button-card'
+                    color_type: blank-card
+                  - type: 'custom:button-card'
+                    color_type: blank-card
+                type: horizontal-stack
+            type: vertical-stack
+          - cards:
+              - type: 'custom:card-modder'
+                style:
+                  --paper-card-background-color: 'rgba(11, 11, 11, 0.40)'
+                card:
                   content: '### Kleine Kamer Scenes'
                   type: markdown
               - cards:
@@ -1181,6 +1367,23 @@ views:
                     style:
                       border-radius: 20px                    
                     card:
+                      name: Gaming
+                      style:
+                        - height: 85px
+                        - text-transform: none
+                        - font-size: 13px
+                      type: 'custom:button-card'
+                      icon: 'mdi:desktop-tower-monitor'
+                      action: service
+                      service:
+                        domain: scene
+                        action: turn_on
+                        data:
+                          entity_id: scene.gamen
+                  - type: 'custom:card-modder'
+                    style:
+                      border-radius: 20px                    
+                    card:
                       name: All OFF
                       style:
                         - height: 85px
@@ -1196,63 +1399,131 @@ views:
                           entity_id: scene.office_off
                   - type: 'custom:button-card'
                     color_type: blank-card
+                type: horizontal-stack
+            type: vertical-stack
+          - cards:
+              - type: 'custom:card-modder'
+                style:
+                  --paper-card-background-color: 'rgba(11, 11, 11, 0.40)'
+                card:
+                  content: '### Keuken Scenes'
+                  type: markdown
+              - cards:
+                  - type: 'custom:card-modder'
+                    style:
+                      border-radius: 20px                    
+                    card:
+                      name: Lights ON
+                      style:
+                        - height: 85px
+                        - text-transform: none
+                        - font-size: 13px
+                      type: 'custom:button-card'
+                      icon: 'mdi:spotlight'
+                      action: service
+                      service:
+                        domain: scene
+                        action: turn_on
+                        data:
+                          entity_id: scene.keukenlampen
+                  - type: 'custom:card-modder'
+                    style:
+                      border-radius: 20px                    
+                    card:
+                      name: Koken
+                      style:
+                        - height: 85px
+                        - text-transform: none
+                        - font-size: 13px
+                      type: 'custom:button-card'
+                      icon: 'mdi:stove'
+                      action: service
+                      service:
+                        domain: scene
+                        action: turn_on
+                        data:
+                          entity_id: scene.koken
+                  - type: 'custom:card-modder'
+                    style:
+                      border-radius: 20px                    
+                    card:
+                      name: All OFF
+                      style:
+                        - height: 85px
+                        - text-transform: none
+                        - font-size: 13px
+                      type: 'custom:button-card'
+                      icon: 'mdi:sleep'
+                      action: service
+                      service:
+                        domain: scene
+                        action: turn_on
+                        data:
+                          entity_id: scene.klaar_met_koken
                   - type: 'custom:button-card'
                     color_type: blank-card
                 type: horizontal-stack
             type: vertical-stack
-        type: vertical-stack
   # Navigation Bar
-      - type: horizontal-stack
-        cards:
-          - type: 'custom:button-card'
-            color_type: blank-card
           - type: 'custom:card-modder'
             style:
-              border-radius: 20px           
+              --paper-card-background-color: 'rgba(11, 11, 11, 0.40)'
+              height: 10px
             card:
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/lights            
-              icon: 'mdi:arrow-left-bold'
-              name: Back
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:card-modder'
-            style:
-              border-radius: 20px
-            card:
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/home   
-              icon: 'mdi:home'
-              name: Home
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:card-modder'
-            style:
-              border-radius: 20px
-            card:
-              name: Next
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/devices   
-              icon: 'mdi:arrow-right-bold'
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:button-card'
-            color_type: blank-card
+              content: ' '
+              type: markdown
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                color_type: blank-card
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px           
+                card:
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/lights            
+                  icon: 'mdi:arrow-left-bold'
+                  name: Back
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px
+                card:
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/home   
+                  icon: 'mdi:home'
+                  name: Home
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px
+                card:
+                  name: Next
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/devices   
+                  icon: 'mdi:arrow-right-bold'
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:button-card'
+                color_type: blank-card
+        type: vertical-stack
     icon: 'mdi:square-outline'
     path: scenes
     title: Scenes
@@ -1277,6 +1548,8 @@ views:
                       entity: switch.receiver_2
                       icon: 'mdi:set-top-box'
                       name: Receiver
+                      action: toggle
+                      long_press_action: more_info
                       style:
                         - height: 85px
                         - text-transform: none
@@ -1289,6 +1562,8 @@ views:
                       entity: media_player.woonkamer_apple_tv_7
                       icon: 'mdi:apple'
                       name: Apple TV
+                      action: toggle
+                      long_press_action: more_info
                       style:
                         - height: 85px
                         - text-transform: none
@@ -1306,6 +1581,8 @@ views:
                       entity: media_player.samsung_tv_remote
                       icon: 'mdi:television'
                       name: TV
+                      action: toggle
+                      long_press_action: more_info
                       style:
                         - height: 85px
                         - text-transform: none
@@ -1328,6 +1605,8 @@ views:
                     card:
                       color: blue
                       entity: switch.ventilator
+                      action: toggle
+                      long_press_action: more_info
                       icon: 'mdi:fan'
                       name: Ventilator
                       style:
@@ -1335,10 +1614,43 @@ views:
                         - text-transform: none
                         - font-size: 13px
                       type: 'custom:button-card'
-                  - type: 'custom:button-card'
-                    color_type: blank-card
-                  - type: 'custom:button-card'
-                    color_type: blank-card
+                  - type: 'custom:card-modder'
+                    style:
+                      border-radius: 20px                   
+                    card:
+                      color: '#efca34'
+                      entity: media_player.slaapkamer_apple_tv_2
+                      action: toggle
+                      long_press_action: more_info
+                      icon: 'mdi:apple'
+                      name: Apple TV
+                      style:
+                        - height: 85px
+                        - text-transform: none
+                        - font-size: 13px
+                      state:
+                        - value: idle
+                          color: '#efca34'
+                        - value: 'on'
+                          color: '#efca34'
+                        - value: 'playing'
+                          color: 'red'
+                      type: 'custom:button-card'
+                  - type: 'custom:card-modder'
+                    style:
+                      border-radius: 20px                   
+                    card:
+                      color: '#efca34'
+                      entity: switch.tradfri_outlet_2
+                      action: toggle
+                      long_press_action: more_info
+                      icon: 'mdi:television'
+                      name: TV
+                      style:
+                        - height: 85px
+                        - text-transform: none
+                        - font-size: 13px
+                      type: 'custom:button-card'
                   - type: 'custom:button-card'
                     color_type: blank-card
                 type: horizontal-stack
@@ -1355,7 +1667,9 @@ views:
                     card:
                       color: '#efca34'
                       entity: switch.waterkoker_2
-                      icon: 'mdi:coffee-outline'
+                      action: toggle
+                      long_press_action: more_info
+                      icon: 'mdi:cup-water'
                       name: Waterkoker
                       style:
                         - height: 85px
@@ -1368,6 +1682,8 @@ views:
                     card:
                       color: '#efca34'
                       entity: switch.afzuigkap_2
+                      action: toggle
+                      long_press_action: more_info
                       icon: 'mdi:fan'
                       name: Afzuigkap
                       style:
@@ -1381,6 +1697,8 @@ views:
                     card:
                       color: '#efca34'
                       entity: switch.air_fryer_2
+                      action: toggle
+                      long_press_action: more_info
                       icon: 'mdi:panorama-fisheye'
                       name: Air Fryer
                       style:
@@ -1394,6 +1712,8 @@ views:
                     card:
                       color: '#efca34'
                       entity: switch.vaatwasser
+                      action: toggle
+                      long_press_action: more_info
                       icon: 'mdi:dishwasher'
                       name: Vaatwasser
                       style:
@@ -1401,6 +1721,30 @@ views:
                         - text-transform: none
                         - font-size: 13px
                       type: 'custom:button-card'
+                type: horizontal-stack
+
+              - cards:
+                  - type: 'custom:card-modder'
+                    style:
+                      border-radius: 20px                  
+                    card:
+                      color: '#efca34'
+                      entity: switch.tradfri_outlet
+                      action: toggle
+                      long_press_action: more_info
+                      icon: 'mdi:coffee-outline'
+                      name: Cappumaker
+                      style:
+                        - height: 85px
+                        - text-transform: none
+                        - font-size: 13px
+                      type: 'custom:button-card'
+                  - type: 'custom:button-card'
+                    color_type: blank-card
+                  - type: 'custom:button-card'
+                    color_type: blank-card
+                  - type: 'custom:button-card'
+                    color_type: blank-card
                 type: horizontal-stack
               - type: 'custom:card-modder'
                 style:
@@ -1415,6 +1759,8 @@ views:
                     card:
                       color: '#efca34'
                       entity: switch.pc_van_stephanie
+                      action: toggle
+                      long_press_action: more_info
                       icon: 'mdi:desktop-tower-monitor'
                       name: PC Steph
                       style:
@@ -1428,6 +1774,8 @@ views:
                     card:
                       color: '#efca34'
                       entity: switch.pc_van_jimmy
+                      action: toggle
+                      long_press_action: more_info
                       icon: 'mdi:desktop-tower-monitor'
                       name: PC Jimmy
                       style:
@@ -1441,6 +1789,8 @@ views:
                     card:
                       color: '#efca34'
                       entity: switch.printer_2
+                      action: toggle
+                      long_press_action: more_info
                       icon: 'mdi:printer-wireless'
                       name: Printer
                       style:
@@ -1453,6 +1803,8 @@ views:
                       border-radius: 20px                    
                     card:
                       entity: media_player.xbox_one
+                      action: toggle
+                      long_press_action: more_info
                       icon: 'mdi:xbox'
                       name: Xbox
                       style:
@@ -1479,6 +1831,8 @@ views:
                     card:
                       color: '#efca34'
                       entity: switch.wasmachine
+                      action: toggle
+                      long_press_action: more_info
                       icon: 'mdi:washing-machine'
                       name: Wasmachine
                       style:
@@ -1492,6 +1846,8 @@ views:
                     card:
                       color: '#efca34'
                       entity: switch.droger
+                      action: toggle
+                      long_press_action: more_info
                       icon: 'mdi:tumble-dryer'
                       name: Droger
                       style:
@@ -1505,59 +1861,66 @@ views:
                     color_type: blank-card
                 type: horizontal-stack
             type: vertical-stack
-        type: vertical-stack
   # Navigation Bar
-      - type: horizontal-stack
-        cards:
-          - type: 'custom:button-card'
-            color_type: blank-card
           - type: 'custom:card-modder'
             style:
-              border-radius: 20px            
+              --paper-card-background-color: 'rgba(11, 11, 11, 0.40)'
+              height: 10px
             card:
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/scenes            
-              icon: 'mdi:arrow-left-bold'
-              name: Back
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:card-modder'
-            style:
-              border-radius: 20px
-            card:
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/home   
-              icon: 'mdi:home'
-              name: Home
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:card-modder'
-            style:
-              border-radius: 20px
-            card:
-              name: Next
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/climate   
-              icon: 'mdi:arrow-right-bold'
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:button-card'
-            color_type: blank-card
+              content: ' '
+              type: markdown
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                color_type: blank-card
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px            
+                card:
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/scenes            
+                  icon: 'mdi:arrow-left-bold'
+                  name: Back
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px
+                card:
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/home   
+                  icon: 'mdi:home'
+                  name: Home
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px
+                card:
+                  name: Next
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/climate   
+                  icon: 'mdi:arrow-right-bold'
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:button-card'
+                color_type: blank-card
+        type: vertical-stack
     icon: 'mdi:power-plug'
     path: devices
     title: Apparaten
@@ -1608,9 +1971,43 @@ views:
                     style:
                       border-radius: 20px
                     card:
+                      ambient_temperature: sensor.temperature_158d0002b546e7
+                      chevron_size: 100
+                      entity: climate.woonkamer
+                      hvac:
+                        attribute: operation_mode
+                        states:
+                          'Off': 'Off'
+                      step: 1
+                      title: Slaapkamer
+                      type: 'custom:thermostat-card'
+                  - type: 'custom:card-modder'
+                    style:
+                      border-radius: 20px
+                    card:
+                      ambient_temperature: sensor.waterkoker_am2301_temperature
+                      chevron_size: 100
+                      entity: climate.kleine_kamer
+                      hvac:
+                        attribute: operation_mode
+                        states:
+                          'Off': 'Off'
+                      step: 1
+                      title: Keuken
+                      type: 'custom:thermostat-card'
+                type: horizontal-stack
+              - cards:
+                  - type: 'custom:card-modder'
+                    style:
+                      border-radius: 20px
+                    card:
                       entities:
                         - climate.woonkamer
                         - climate.kleine_kamer
+                        - entity: climate.woonkamer
+                          name: Slaapkamer
+                        - entity: climate.kleine_kamer
+                          name: Keuken
                       type: entities
                 type: horizontal-stack
             type: vertical-stack
@@ -1636,6 +2033,9 @@ views:
                 name: Woonkamer Lichtopbrengst
                 type: sensor
             type: 'custom:swipe-card'
+            parameters:
+              pagination:
+                type: 'bullets'
           - cards:
               - entity: sensor.printer_am2301_temperature
                 graph: line
@@ -1646,6 +2046,9 @@ views:
                 name: Kleine Kamer Luchtvochtigheid
                 type: sensor
             type: 'custom:swipe-card'
+            parameters:
+              pagination:
+                type: 'bullets'
           - cards:
               - entity: sensor.temperature_158d0002b546e7
                 graph: line
@@ -1660,6 +2063,9 @@ views:
                 name: Slaapkamer Luchtdruk
                 type: sensor
             type: 'custom:swipe-card'
+            parameters:
+              pagination:
+                type: 'bullets'
           - cards:
               - entity: sensor.waterkoker_am2301_temperature
                 graph: line
@@ -1674,6 +2080,9 @@ views:
                 name: Keuken Lichtopbrengst
                 type: sensor
             type: 'custom:swipe-card'
+            parameters:
+              pagination:
+                type: 'bullets'
           - cards:
               - entity: sensor.temperature_158d0002b54868
                 graph: line
@@ -1688,59 +2097,69 @@ views:
                 name: Badkamer Luchtdruk
                 type: sensor
             type: 'custom:swipe-card'
-        type: vertical-stack
+            parameters:
+              pagination:
+                type: 'bullets'
   # Navigation Bar
-      - type: horizontal-stack
-        cards:
-          - type: 'custom:button-card'
-            color_type: blank-card
           - type: 'custom:card-modder'
             style:
-              border-radius: 20px            
+              --paper-card-background-color: 'rgba(11, 11, 11, 0.40)'
+              height: 10px
             card:
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/devices            
-              icon: 'mdi:arrow-left-bold'
-              name: Back
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:card-modder'
-            style:
-              border-radius: 20px
-            card:
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/home   
-              icon: 'mdi:home'
-              name: Home
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:card-modder'
-            style:
-              border-radius: 20px
-            card:
-              name: Next
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/security   
-              icon: 'mdi:arrow-right-bold'
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:button-card'
-            color_type: blank-card
+              content: ' '
+              type: markdown
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                color_type: blank-card
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px            
+                card:
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/devices            
+                  icon: 'mdi:arrow-left-bold'
+                  name: Back
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px
+                card:
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/home   
+                  icon: 'mdi:home'
+                  name: Home
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px
+                card:
+                  name: Next
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/security   
+                  icon: 'mdi:arrow-right-bold'
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:button-card'
+                color_type: blank-card
+        type: vertical-stack
     icon: 'mdi:temperature-celsius'
     path: 'climate'
     title: Temperaturen
@@ -1766,108 +2185,111 @@ views:
               entity: camera.gallerij_camera
               title: Camera's
               type: picture-entity
-      - type: 'custom:card-modder'
-        style:
-          border-radius: 20px
-          overflow: hidden
-        card:
-          type: picture-elements
-          image: /local/images/doors.png
-          elements:
-            - type: icon
-              icon: mdi:door
-              entity: binary_sensor.door_window_sensor_158d000236f9dd
-              tap_action: more-info
-              style:
-                top: 82%
-                left: 85%              
-                color: white
-            - type: state-label
-              entity: binary_sensor.door_window_sensor_158d000236f9dd
-              style:
-                top: 95%
-                left: 85%
-                color: white
-            - type: icon
-              icon: mdi:sofa
-              entity: binary_sensor.door_window_sensor_158d000238644b
-              tap_action: more-info
-              style:
-                top: 82%
-                left: 50% 
-                color: white
-            - type: state-label
-              entity: binary_sensor.door_window_sensor_158d000238644b
-              style:
-                top: 95%
-                left: 50%
-                color: white
-            - type: icon
-              icon: mdi:hotel
-              entity: binary_sensor.door_window_sensor_158d000232ac1b
-              tap_action: more-info
-              style:
-                top: 82%
-                left: 15% 
-                color: white
-            - type: state-label
-              entity: binary_sensor.door_window_sensor_158d000232ac1b
-              style:
-                top: 95%
-                left: 15%
-                color: white
-      - type: 'custom:card-modder'
-        style:
-          border-radius: 20px
-          overflow: hidden
-        card:
-          type: picture-elements
-          image: /local/images/aqara.png
-          elements:
-            - type: icon
-              icon: mdi:toilet
-              entity: binary_sensor.motion_sensor_158d00024e687d
-              tap_action: more-info
-              style:
-                top: 82%
-                left: 85%              
-                color: white
-            - type: state-label
-              entity: binary_sensor.motion_sensor_158d00024e687d
-              style:
-                top: 95%
-                left: 85%
-                color: white
-            - type: icon
-              icon: mdi:washing-machine
-              entity: binary_sensor.motion_sensor_158d0002b7eec9
-              tap_action: more-info
-              style:
-                top: 82%
-                left: 50% 
-                color: white
-            - type: state-label
-              entity: binary_sensor.motion_sensor_158d0002b7eec9
-              style:
-                top: 95%
-                left: 50%
-                color: white
-            - type: icon
-              icon: mdi:door
-              entity: binary_sensor.dafang_motion_sensor
-              tap_action: more-info
-              style:
-                top: 82%
-                left: 15% 
-                color: white
-            - type: state-label
-              entity: binary_sensor.dafang_motion_sensor
-              style:
-                top: 95%
-                left: 15%
-                color: white
+              hold_action:
+                action: navigate
+                navigation_path: /lovelace/links
       - type: vertical-stack
         cards:
+          - type: 'custom:card-modder'
+            style:
+              border-radius: 20px
+              overflow: hidden
+            card:
+              type: picture-elements
+              image: /local/images/doors.png
+              elements:
+                - type: icon
+                  icon: mdi:door
+                  entity: binary_sensor.door_window_sensor_158d000236f9dd
+                  tap_action: more-info
+                  style:
+                    top: 82%
+                    left: 85%              
+                    color: white
+                - type: state-label
+                  entity: binary_sensor.door_window_sensor_158d000236f9dd
+                  style:
+                    top: 95%
+                    left: 85%
+                    color: white
+                - type: icon
+                  icon: mdi:sofa
+                  entity: binary_sensor.door_window_sensor_158d000238644b
+                  tap_action: more-info
+                  style:
+                    top: 82%
+                    left: 50% 
+                    color: white
+                - type: state-label
+                  entity: binary_sensor.door_window_sensor_158d000238644b
+                  style:
+                    top: 95%
+                    left: 50%
+                    color: white
+                - type: icon
+                  icon: mdi:hotel
+                  entity: binary_sensor.door_window_sensor_158d000232ac1b
+                  tap_action: more-info
+                  style:
+                    top: 82%
+                    left: 15% 
+                    color: white
+                - type: state-label
+                  entity: binary_sensor.door_window_sensor_158d000232ac1b
+                  style:
+                    top: 95%
+                    left: 15%
+                    color: white
+          - type: 'custom:card-modder'
+            style:
+              border-radius: 20px
+              overflow: hidden
+            card:
+              type: picture-elements
+              image: /local/images/aqara.png
+              elements:
+                - type: icon
+                  icon: mdi:toilet
+                  entity: binary_sensor.motion_sensor_158d00024e687d
+                  tap_action: more-info
+                  style:
+                    top: 82%
+                    left: 85%              
+                    color: white
+                - type: state-label
+                  entity: binary_sensor.motion_sensor_158d00024e687d
+                  style:
+                    top: 95%
+                    left: 85%
+                    color: white
+                - type: icon
+                  icon: mdi:washing-machine
+                  entity: binary_sensor.motion_sensor_158d0002b7eec9
+                  tap_action: more-info
+                  style:
+                    top: 82%
+                    left: 50% 
+                    color: white
+                - type: state-label
+                  entity: binary_sensor.motion_sensor_158d0002b7eec9
+                  style:
+                    top: 95%
+                    left: 50%
+                    color: white
+                - type: icon
+                  icon: mdi:door
+                  entity: binary_sensor.dafang_motion_sensor
+                  tap_action: more-info
+                  style:
+                    top: 82%
+                    left: 15% 
+                    color: white
+                - type: state-label
+                  entity: binary_sensor.dafang_motion_sensor
+                  style:
+                    top: 95%
+                    left: 15%
+                    color: white
           - type: 'custom:card-modder'
             style:
               border-radius: 20px            
@@ -1875,59 +2297,66 @@ views:
               type: picture-entity
               image: /local/images/smoke.png
               entity: binary_sensor.smoke_sensor_158d000287ab41
-              name: Keuken 
+              name: Keuken
   # Navigation Bar
-      - type: horizontal-stack
-        cards:
-          - type: 'custom:button-card'
-            color_type: blank-card
           - type: 'custom:card-modder'
             style:
-              border-radius: 20px            
+              --paper-card-background-color: 'rgba(11, 11, 11, 0.40)'
+              height: 10px
             card:
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/climate            
-              icon: 'mdi:arrow-left-bold'
-              name: Back
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:card-modder'
-            style:
-              border-radius: 20px
-            card:
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/home   
-              icon: 'mdi:home'
-              name: Home
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:card-modder'
-            style:
-              border-radius: 20px
-            card:
-              name: Next
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/energy   
-              icon: 'mdi:arrow-right-bold'
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:button-card'
-            color_type: blank-card
+              content: ' '
+              type: markdown
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                color_type: blank-card
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px            
+                card:
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/climate            
+                  icon: 'mdi:arrow-left-bold'
+                  name: Back
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px
+                card:
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/home   
+                  icon: 'mdi:home'
+                  name: Home
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px
+                card:
+                  name: Next
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/energy   
+                  icon: 'mdi:arrow-right-bold'
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:button-card'
+                color_type: blank-card
     icon: 'mdi:cctv'
     path: security
     title: Security
@@ -2041,7 +2470,7 @@ views:
                   elements:
                     # Title en Program
                     - type: state-label
-                      entity: sensor.dryer_status
+                      entity: input_select.dryer_status
                       style:
                         left: 0
                         bottom: 0
@@ -2217,59 +2646,66 @@ views:
                         line-height: 32px
                         padding: 36px 13px
             type: vertical-stack
-        type: horizontal-stack
   # Navigation Bar
-      - type: horizontal-stack
-        cards:
-          - type: 'custom:button-card'
-            color_type: blank-card
           - type: 'custom:card-modder'
             style:
-              border-radius: 20px            
+              --paper-card-background-color: 'rgba(11, 11, 11, 0.40)'
+              height: 10px
             card:
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/security            
-              icon: 'mdi:arrow-left-bold'
-              name: Back
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:card-modder'
-            style:
-              border-radius: 20px
-            card:
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/home   
-              icon: 'mdi:home'
-              name: Home
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:card-modder'
-            style:
-              border-radius: 20px
-            card:
-              name: Next
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/calendar  
-              icon: 'mdi:arrow-right-bold'
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:button-card'
-            color_type: blank-card
+              content: ' '
+              type: markdown
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                color_type: blank-card
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px            
+                card:
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/security            
+                  icon: 'mdi:arrow-left-bold'
+                  name: Back
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px
+                card:
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/home   
+                  icon: 'mdi:home'
+                  name: Home
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px
+                card:
+                  name: Next
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/calendar  
+                  icon: 'mdi:arrow-right-bold'
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:button-card'
+                color_type: blank-card
+        type: vertical-stack
     icon: 'mdi:washing-machine'
     path: energy
     title: Energie
@@ -2334,60 +2770,66 @@ views:
                     - calendar.schings  
                   showColors: true                  
             type: vertical-stack
-        type: vertical-stack
   # Navigation Bar
-      - type: horizontal-stack
-        cards:
-          - type: 'custom:button-card'
-            color_type: blank-card
           - type: 'custom:card-modder'
             style:
-              border-radius: 20px
-            
+              --paper-card-background-color: 'rgba(11, 11, 11, 0.40)'
+              height: 10px
             card:
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/energy            
-              icon: 'mdi:arrow-left-bold'
-              name: Back
-              type: entity-button
-              style:
-                - height: 12px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:card-modder'
-            style:
-              border-radius: 20px
-            card:
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/home   
-              icon: 'mdi:home'
-              name: Home
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:card-modder'
-            style:
-              border-radius: 20px
-            card:
-              name: Next
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/information  
-              icon: 'mdi:arrow-right-bold'
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:button-card'
-            color_type: blank-card
+              content: ' '
+              type: markdown
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                color_type: blank-card
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px                
+                card:
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/energy            
+                  icon: 'mdi:arrow-left-bold'
+                  name: Back
+                  type: entity-button
+                  style:
+                    - height: 12px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px
+                card:
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/home   
+                  icon: 'mdi:home'
+                  name: Home
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px
+                card:
+                  name: Next
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/information  
+                  icon: 'mdi:arrow-right-bold'
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:button-card'
+                color_type: blank-card
+        type: vertical-stack
     badges: []
     title: Calendar
     icon: 'mdi:calendar'
@@ -2429,10 +2871,10 @@ views:
         card:
           entities:
             - entity: sensor.ssl_certificate_expiry
-            - entity: sensor.EMAIL_ADDRESS
+            - entity: sensor.YOUREMAIL
               icon: 'mdi:email'
               name: Email Jimmy
-            - entity: sensor.EMAIL_ADDRESS
+            - entity: sensor.YOUREMAIL
               icon: 'mdi:email'
               name: Email Stephanie
           type: glance
@@ -2487,57 +2929,66 @@ views:
               - attributes:
                   battery_level: < 25
   # Navigation Bar
-      - type: horizontal-stack
+      - type: vertical-stack
         cards:
-          - type: 'custom:button-card'
-            color_type: blank-card
           - type: 'custom:card-modder'
             style:
-              border-radius: 20px            
+              --paper-card-background-color: 'rgba(11, 11, 11, 0.40)'
+              height: 10px
             card:
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/calendar            
-              icon: 'mdi:arrow-left-bold'
-              name: Back
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:card-modder'
-            style:
-              border-radius: 20px
-            card:
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/home   
-              icon: 'mdi:home'
-              name: Home
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:card-modder'
-            style:
-              border-radius: 20px
-            card:
-              name: Next
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/mediacenter   
-              icon: 'mdi:arrow-right-bold'
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:button-card'
-            color_type: blank-card
+              content: ' '
+              type: markdown
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                color_type: blank-card
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px            
+                card:
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/calendar            
+                  icon: 'mdi:arrow-left-bold'
+                  name: Back
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px
+                card:
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/home   
+                  icon: 'mdi:home'
+                  name: Home
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px
+                card:
+                  name: Next
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/mediacenter   
+                  icon: 'mdi:arrow-right-bold'
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:button-card'
+                color_type: blank-card
     icon: 'mdi:information'
     path: information
     title: Informatie
@@ -2604,59 +3055,66 @@ views:
             card:
               entity: media_player.plex_woonkamer
               type: media-control
-        type: vertical-stack
   # Navigation Bar
-      - type: horizontal-stack
-        cards:
-          - type: 'custom:button-card'
-            color_type: blank-card
           - type: 'custom:card-modder'
             style:
-              border-radius: 20px           
+              --paper-card-background-color: 'rgba(11, 11, 11, 0.40)'
+              height: 10px
             card:
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/information            
-              icon: 'mdi:arrow-left-bold'
-              name: Back
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:card-modder'
-            style:
-              border-radius: 20px
-            card:
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/home   
-              icon: 'mdi:home'
-              name: Home
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:card-modder'
-            style:
-              border-radius: 20px
-            card:
-              name: Next
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/automation   
-              icon: 'mdi:arrow-right-bold'
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:button-card'
-            color_type: blank-card
+              content: ' '
+              type: markdown
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                color_type: blank-card
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px           
+                card:
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/information            
+                  icon: 'mdi:arrow-left-bold'
+                  name: Back
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px
+                card:
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/home   
+                  icon: 'mdi:home'
+                  name: Home
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px
+                card:
+                  name: Next
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/automation   
+                  icon: 'mdi:arrow-right-bold'
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:button-card'
+                color_type: blank-card
+        type: vertical-stack
     icon: 'mdi:television'
     path: mediacenter
     title: Media Players
@@ -2664,75 +3122,83 @@ views:
 
 # Automations View
   - cards:
-      - type: 'custom:card-modder'
-        style:
-          border-radius: 20px
-        card:
-          type: 'entities'
-          title: Automations
-          entities:
-            - entity: automation.media_player_playing
-              name: Dimmen Film Kijken
-            - entity: automation.media_player_paused_stopped
-              name: Verlichten na Film Kijken
-            - entity: automation.vaatwasser_starten_na_drogen
-              name: Vaatwasser starten na Drogen
-            - entity: automation.vaatwasser_starten_na_wassen
-              name: Vaatwasser starten na Wassen
-          show_header_toggle: false
-  # Navigation Bar
-      - type: horizontal-stack
+      - type: vertical-stack
         cards:
-          - type: 'custom:button-card'
-            color_type: blank-card
-          - type: 'custom:card-modder'
-            style:
-              border-radius: 20px
-            
-            card:
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/mediacenter
-              icon: 'mdi:arrow-left-bold'
-              name: Back
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
           - type: 'custom:card-modder'
             style:
               border-radius: 20px
             card:
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/home
-              icon: 'mdi:home'
-              name: Home
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
+              type: 'entities'
+              title: Automations
+              entities:
+                - entity: automation.media_player_playing
+                  name: Dimmen Film Kijken
+                - entity: automation.media_player_paused_stopped
+                  name: Verlichten na Film Kijken
+                - entity: automation.vaatwasser_starten_na_drogen
+                  name: Vaatwasser starten na Drogen
+                - entity: automation.vaatwasser_starten_na_wassen
+                  name: Vaatwasser starten na Wassen
+              show_header_toggle: false
+  # Navigation Bar
           - type: 'custom:card-modder'
             style:
-              border-radius: 20px
+              --paper-card-background-color: 'rgba(11, 11, 11, 0.40)'
+              height: 10px
             card:
-              name: Next
-              entity: input_boolean.badkamer_ha2
-              tap_action:
-                action: navigate
-                navigation_path: /lovelace/floorplan
-              icon: 'mdi:arrow-right-bold'
-              type: entity-button
-              style:
-                - height: 85px
-                - text-transform: none
-                - font-size: 13px
-          - type: 'custom:button-card'
-            color_type: blank-card
+              content: ' '
+              type: markdown
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                color_type: blank-card
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px               
+                card:
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/mediacenter
+                  icon: 'mdi:arrow-left-bold'
+                  name: Back
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px
+                card:
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/home
+                  icon: 'mdi:home'
+                  name: Home
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px
+                card:
+                  name: Next
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/floorplan
+                  icon: 'mdi:arrow-right-bold'
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:button-card'
+                color_type: blank-card
     badges: []
     title: Automations
     icon: 'mdi:alpha-a-box'
@@ -2751,15 +3217,88 @@ views:
 
 # Waze Links View > Used to open directly in iOS / This has no icon as I don't want this to be displayed in the nav bar
   - cards:
-      - type: 'custom:card-modder'
-        style:
-          border-radius: 20px
-          --paper-card-background-color: '#d8d8d8'
-        card:
-          type: markdown
-          content: >
-             [Navigate to Home](https://www.waze.com/ul?ll=LATITUDE%2C5.LONGTITUDE&navigate=yes&zoom=16)
+      - type: vertical-stack
+        cards:
+          - type: 'custom:card-modder'
+            style:
+              --paper-card-background-color: 'rgba(11, 11, 11, 0.40)'
+            card:
+              content: 'Waze Navigation'
+              type: markdown
+          - type: 'custom:card-modder'
+            style:
+              border-radius: 20px
+              --paper-card-background-color: 'rgba(191, 191, 191, 0.90)'
+            card:
+              type: entities
+              entities:
+                - type: weblink
+                  name: Home
+                  icon: 'mdi:home-outline'
+                  url: https://www.waze.com/ul?ll=LATITUDE%2CLONGITUDE&navigate=yes&zoom=16
+                - type: weblink
+                  name: Oma Schings
+                  icon: 'mdi:car'
+                  url: https://www.waze.com/ul?ll=LATITUDE%2CLONGITUDE&navigate=yes&zoom=16
+                - type: weblink
+                  name: Camping Les Pins
+                  icon: 'mdi:tent'
+                  url: https://www.waze.com/ul?ll=44.79056320%2C1.47207170&navigate=yes&zoom=16
+                - type: weblink
+                  name: Thermen Bussloo
+                  icon: 'mdi:tree'
+                  url: https://www.waze.com/ul?ll=52.19191580%2C6.09528070&navigate=yes&zoom=16
+          - type: 'custom:card-modder'
+            style:
+              --paper-card-background-color: 'rgba(11, 11, 11, 0.40)'
+            card:
+              content: 'Camera Streams/Intercom'
+              type: markdown
+          - type: 'custom:card-modder'
+            style:
+              border-radius: 20px
+              --paper-card-background-color: 'rgba(191, 191, 191, 0.90)'
+            card:
+              type: entities
+              entities:
+                - type: weblink
+                  name: Gallerij Camera
+                  url: vlc-x-callback://x-callback-url/stream?url=rtsp://YOURURL:8554/unicast
+
+  # Navigation Bar
+          - type: 'custom:card-modder'
+            style:
+              --paper-card-background-color: 'rgba(11, 11, 11, 0.40)'
+              height: 10px
+            card:
+              content: ' '
+              type: markdown
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                color_type: blank-card
+              - type: 'custom:button-card'
+                color_type: blank-card
+              - type: 'custom:card-modder'
+                style:
+                  border-radius: 20px
+                card:
+                  entity: input_boolean.badkamer_ha2
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/home
+                  icon: 'mdi:home'
+                  name: Home
+                  type: entity-button
+                  style:
+                    - height: 85px
+                    - text-transform: none
+                    - font-size: 13px
+              - type: 'custom:button-card'
+                color_type: blank-card
+              - type: 'custom:button-card'
+                color_type: blank-card
     badges: []
-    title: Waze
+    title: Links
     icon: 'mdi:blank'
-    path: waze
+    path: links
