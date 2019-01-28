@@ -1,0 +1,148 @@
+  - platform: postnl
+    name: PostNL Jimmy
+    username: !secret postnl_user
+    password: !secret postnl_pass
+
+  - platform: postnl
+    name: PostNL Stephanie
+    username: !secret postnl_user_2
+    password: !secret postnl_pass_2
+
+  - platform: time_date
+    display_options:
+      - "time"
+
+  - platform: sonarr
+    name: Sonarr
+    host: 192.168.0.34
+    api_key: !secret sonarr_api_key
+    monitored_conditions:
+      - wanted
+      - upcoming
+      - series
+      - queue
+      - diskspace
+    days: 7
+
+  - platform: sonarr_upcoming_media
+    api_key: !secret sonarr_api_key
+    host: 192.168.0.34
+    port: 8989
+    days: 7
+    max: 10
+
+  - platform: haveibeenpwned
+    email:
+      - !secret email_3
+      - !secret email_1
+
+  - platform: cert_expiry
+    host: remote.jimsteph.me
+
+  - platform: radarr
+    api_key: !secret radarr_api_key
+    host: 192.168.0.34
+    port: 7878
+    monitored_conditions:
+      - movies
+      - upcoming   
+      - status
+      - commands
+      - diskspace
+    days: 90 
+
+  - platform: radarr_upcoming_media
+    api_key: !secret radarr_api_key
+    host: 192.168.0.34
+    port: 7878
+    days: 120
+    max: 10   
+
+  - platform: moon
+
+  - platform: waze_travel_time
+    name: Reistijd Jimmy
+    origin: device_tracker.iphone_jimmy
+    destination: zone.home
+    region: EU
+
+  - platform: waze_travel_time
+    name: Reistijd Stephanie
+    origin: device_tracker.iphone_van_steph
+    destination: zone.home
+    region: EU
+
+#  - platform: qbittorrent
+#    url: !secret qbittorrent_url
+#    username: !secret qbit_usr
+#    password: !secret qbit_pwd
+
+  - platform: template
+    sensors:
+      washing_machine_status:
+        value_template: '{{ states.input_select.washing_machine_status.state}}'
+        friendly_name: 'Wasmachine Status'
+      dishwasher_status:
+        value_template: '{{ states.input_select.dishwasher_status.state}}'
+        friendly_name: 'Vaatwasser Status'
+      dryer_status:
+        value_template: '{{ states.input_select.dryer_status.state}}'
+        friendly_name: 'Droger Status'
+
+  - platform: template
+    sensors:
+      wedding_countdown_days:
+        value_template: >-
+          {{ states.sensor.trouwdag.attributes.days }} dagen
+  - platform: template
+    sensors:
+      verjaardag_stephanie_days:
+        value_template: >-
+          {{ states.sensor.verjaardag_stephanie.attributes.days }} dagen 
+  - platform: template
+    sensors:
+      verjaardag_jimmy_days:
+        value_template: >-
+          {{ states.sensor.verjaardag_jimmy.attributes.days }} dagen
+  - platform: template
+    sensors:
+      verjaardag_tala_days:
+        value_template: >-
+          {{ states.sensor.verjaardag_tala.attributes.days }} dagen
+
+  - platform: template
+    sensors:
+      postnl_jimmy_states:
+        value_template: >-
+          {{ states.sensor.postnl_jimmy.attributes.attribution }}
+      postnl_stephanie_states:
+        value_template: >-
+          {{ states.sensor.postnl_stephanie.attributes.attribution }}
+
+  - platform: date_countdown
+    name: Trouwdag
+    date: "16-06-2019 00:00"
+
+  - platform: date_countdown
+    name: Verjaardag Tala
+    date: "28-07-2019 00:00"
+
+  - platform: date_countdown
+    name: Verjaardag Stephanie
+    date: "16-06-2019 00:00"
+
+  - platform: date_countdown
+    name: Verjaardag Jimmy
+    date: "04-11-2019 00:00"
+
+  - platform: darksky
+    api_key: !secret darksky
+    forecast:
+      - 0
+    monitored_conditions:
+      - summary
+      - temperature
+      - humidity
+      - pressure
+    language: nl
+    mode: daily

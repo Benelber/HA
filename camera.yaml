@@ -1,0 +1,8 @@
+  - platform: mjpeg
+    mjpeg_url: http://192.168.0.31:8082/video.mjpg
+    framerate: 30
+    name: Woonkamer Camera
+
+  - platform: ffmpeg
+    input: rtsp://192.168.0.75:8554/unicast
+    name: Gallerij Camera
