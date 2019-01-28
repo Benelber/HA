@@ -28,6 +28,9 @@ v. 28.01.2019
     a tap and hold action for buttons that work with
     the custom:button-card. You will need the edited
     button-card.js which can be downloaded here.
+  - added xbox custom-component, download this one which
+    has the fixed version number (for the ones that get
+    errors with the current 'official' one)
 
 v. 26.01.2019: 
   - ui-lovelace.yaml, themes.yaml and image files added 
