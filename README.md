@@ -34,4 +34,7 @@ v. 26.01.2019:
     to repository
 
 
-FOR SCREENSHOTS PLEASE REFER TO THE SCREENSHOTS_DESKTOP or SCREENSHOTS_MOBILE FOLDERS!!
+For screenshots look at the screenshots folders (mobile or desktop) if you can't open them on your mobile, check the view on desktop button!!
+
+WARNING! DO NOT JUST COPY/PASTE MY SETUP AS YOU WILL GET ERRORS, YOU WILL GET FRUSTRATED AND I CAN NOT GIVE SUPPORT ON THAT.
+INSTEAD CREATE YOUR OWN! GOOD LUCK.
