@@ -1,0 +1,470 @@
+#############################################################################
+#									                                        #
+#									                                        #
+#		      HOME ASSISTANT CONFIGURATION.YAML			                    #
+#									                                        #
+#									                                        #
+#############################################################################
+
+homeassistant:
+  name: Home
+  latitude: YOUR LATITUDE HERE
+  longitude: YOUR LONGITUDE HERE
+  elevation: 22
+  unit_system: metric
+  time_zone: Europe/Amsterdam
+  customize: !include customize.yaml
+
+#############################################################################
+#									                                        #
+#									                                        #
+# 			    	  Config				                                #
+#									                                        #
+#									                                        #
+#############################################################################
+
+frontend:
+  themes: !include themes.yaml
+  javascript_version: auto
+  extra_html_url:
+    - /local/custom_ui/state-card-floorplan.html
+
+config:
+
+http:
+# api_password: !secret http_password
+  base_url: !secret base_url
+  ssl_certificate: !secret ssl_certificate
+  ssl_key: !secret ssl_key
+
+#############################################################################
+# Checks for available updates						                        #
+# Note: This component will send some information about your system to	    #
+# the developers to assist with development of Home Assistant.	     	    #
+# For more information, please see:					                        #
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/	        #
+#############################################################################
+
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+discovery:
+  ignore:
+    - sabnzbd
+  enable:
+    - homekit
+sun:
+
+tts:
+  - platform: google
+
+cloud:
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+sensor: !include sensor.yaml
+binary_sensor: !include binary_sensors.yaml
+camera: !include camera.yaml
+media_player: !include media_player.yaml
+light: !include light.yaml
+switch: !include switch.yaml
+input_boolean: !include input_boolean.yaml
+zone: !include zone.yaml
+device_tracker: !include device_tracker.yaml
+alarm_control_panel: !include alarms.yaml
+scene: !include scenes.yaml
+
+xiaomi_aqara:
+  gateways:
+    - host: 192.168.0.50
+      key: !secret xiaomi_gateway
+
+#############################################################################
+#									                                        #
+#									                                        #
+#				   Homekit / iOS	                                 	    #
+#									                                        #
+#									                                        #
+#############################################################################
+
+ios:
+  push:
+    categories:
+      - name: Afzuigkap Alert
+        identifier: 'afzuigkap_alert'
+        actions:
+          - identifier: 'AFZUIGKAP_UITZETTEN'
+            title: 'Afzuigkap Uitschakelen'
+          - identifier: 'AFZUIGKAP_ANNULEREN'
+            title: 'Annuleren'
+            destructive: yes
+      - name: Alarm Alert
+        identifier: 'alarm_alert'
+        actions:
+          - identifier: 'ALARM_UITSCHAKELEN'
+            title: 'Alarm Uitschakelen'
+          - identifier: 'ALARM_ANNULEREN'
+            title: 'Annuleren'
+            destructive: yes
+      - name: Smoke Alert
+        identifier: 'smoke_alert'
+        actions:
+          - identifier: 'SMOKE_ALARM_INSCHAKELEN'
+            title: 'Rookmelder Dempen (Tijdelijk)'
+          - identifier: 'SMOKE_ANNULEREN'
+            title: 'Annuleren'
+            destructive: yes
+      - name: Receiver Aanzetten
+        identifier: 'receiver_alert'
+        actions:
+          - identifier: 'RECEIVER_INSCHAKELEN'
+            title: 'Receiver Inschakelen'
+          - identifier: 'TV_UITSCHAKELEN'
+            title: 'TV Uitschakelen'
+          - identifier: 'RECEIVER_ANNULEREN'
+            title: 'Annuleren'
+            destructive: yes
+      - name: Alarm Activeren
+        identifier: 'alarm_activeren'
+        actions:
+          - identifier: 'ALARM_AFWEZIG'
+            title: 'Alarm Afwezig'
+          - identifier: 'ALARM_THUIS'
+            title: 'Alarm Thuis'
+          - identifier: 'ALARM_ANNULEREN'
+            title: 'Annuleren'
+            destructive: yes
+      - name: Droger Alert
+        identifier: 'droger_alert'
+        actions:
+          - identifier: 'DROGER_UITSCHAKELEN'
+            title: 'Droger Uitschakelen'
+          - identifier: 'VAATWASSER_INSCHAKELEN'
+            title: 'Vaatwasser Inschakelen'
+          - identifier: 'DROGER_ANNULEREN'
+            title: 'Annuleren'
+            destructive: yes
+      - name: Wasmachine Alert
+        identifier: 'wasmachine_alert'
+        actions:
+          - identifier: 'WASMACHINE_UITSCHAKELEN'
+            title: 'Wasmachine Uitschakelen'
+          - identifier: 'VAATWASSER_INSCHAKELEN'
+            title: 'Vaatwasser Inschakelen'
+          - identifier: 'WASMACHINE_ANNULEREN'
+            title: 'Annuleren'
+            destructive: yes
+      - name: Vaatwasser Alert
+        identifier: 'vaatwasser_alert'
+        actions:
+          - identifier: 'VAATWASSER_UITSCHAKELEN'
+            title: 'Vaatwasser Uitschakelen'
+          - identifier: 'VAATWASSER_ANNULEREN'
+            title: 'Annuleren'
+            destructive: yes
+      - name: Bijkeuken Alert
+        identifier: 'bijkeuken_alert'
+        actions:
+          - identifier: 'SLA_ALARM'
+            title: 'SLA ALARM'
+            destructive: yes
+          - identifier: 'AFWEZIG_ALARM'
+            title: 'Alarm Afwezig'
+            destructive: yes
+          - identifier: 'THUIS_ALARM'
+            title: 'Alarm Thuis'
+          - identifier: 'BIJKEUKEN_ANNULEREN'
+            title: 'Annuleren'
+            destructive: yes
+      - name: Toilet Alert
+        identifier: 'toilet_alert'
+        actions:
+          - identifier: 'SLA_ALARM'
+            title: 'SLA ALARM'
+            destructive: yes
+          - identifier: 'AFWEZIG_ALARM'
+            title: 'Alarm Afwezig'
+            destructive: yes
+          - identifier: 'THUIS_ALARM'
+            title: 'Alarm Thuis'
+          - identifier: 'TOILET_ANNULEREN'
+            title: 'Annuleren'
+            destructive: yes
+      - name: Meds Alert
+        identifier: 'meds_alert'
+        actions:
+          - identifier: 'MEDS_ALARM'
+            title: 'Voltooid'
+          - identifier: 'MEDS_ANNULEREN'
+            title: 'Herhaal over 20min'
+            destructive: yes
+      - name: Camera
+        identifier: 'camera'
+        actions:
+          - identifier: 'SLA_ALARM'
+            title: 'SLA ALARM'
+            destructive: yes
+            authenticationRequired: true
+          - identifier: 'AFWEZIG_ALARM'
+            title: 'Alarm Inschakelen'
+          - identifier: 'TOILET_ANNULEREN'
+            title: 'Annuleren'
+            destructive: yes
+  
+homekit:
+  auto_start: False
+  filter:
+    include_domains:
+      - alarm_control_panel
+      - light
+      - media_player
+      - sensor
+      - switch
+      - binary_sensor
+      - input_boolean
+    include_entities:
+      - media_player.slaapkamer_apple_tv
+      - media_player.samsung_tv_remote
+      - alarm_control_panel.home_alarm
+      - input_boolean.badkamer_hass
+    exclude_entities:
+      - binary_sensor.floorplan
+      - light.keuken
+      - light.balkon
+      - light.toilet
+      - light.bijkeuken
+      - light.kleine_kamer
+      - light.balkonlamp
+      - light.bijkeukenlamp
+      - light.keukenlamp_a
+      - light.keukenlamp_b
+      - light.keukenlamp_c
+      - light.kleine_kamer_lamp_a
+      - light.kleine_kamer_lamp_b
+      - light.kleine_kamer_lamp_c
+      - light.toiletlamp
+      - light.nachtkastje_jimmy
+      - light.nachtkastje_stephanie_2
+      - light.nachtkastje_stephanie
+      - light.slaapkamer
+      - sensor.weer_temperature_min
+      - sensor.weer_temperature_max
+      - sensor.weer_pressure
+      - sensor.weer_visibility
+      - sensor.weer_condition
+      - sensor.weer_current
+      - light.tradfri_group7e21455204400026131085
+      - light.tradfri_group_7
+      - input_boolean.badkamer_ha2
+      - light.tradfri_bulb_e27_ws_opal_980lm_4
+      - light.vloerlamp_2
+      - light.vloerlamp
+      - light.tafel_lamp
+      - light.tafellampje
+      - light.eettafel_lamp
+      - light.woonkamer_plafond
+      - sensor.woonkamer_humidity
+      - sensor.woonkamer_temperature
+      - sensor.kleine_kamer_temperature
+      - sensor.kleine_kamer_humidity
+      - light.keuken_plafondlampen
+      - light.kleine_kamer_plafondlampen
+      - switch.receiver
+      - switch.air_fryer
+      - switch.Printer
+      - light.keukenspots
+      - switch.waterkoker
+      - switch.afzuigkap
+      - input_boolean.badkamer_hass
+      - sensor.dark_sky_temperature_0
+      - camera.dafang_motion_snapshot
+      - cover.dafang_move_left_right
+      - cover.dafang_move_up_down
+      - sensor.dafang_light_sensor
+      - switch.dafang_blue_led
+      - switch.dafang_h264_rtsp_server
+      - switch.dafang_ir_filter
+      - switch.dafang_ir_led
+      - switch.dafang_mjpeg_rtsp_server
+      - switch.dafang_motion_detection
+      - switch.dafang_motion_send_mail
+      - switch.dafang_motion_send_telegram
+      - switch.dafang_motion_tracking
+      - switch.dafang_night_mode
+      - switch.dafang_night_mode_auto
+      - switch.dafang_yellow_led
+      - light.vloerled
+      - light.bedled
+      - light.dressoirled
+      - light.tvled
+      - light.bankled
+  entity_config:
+    media_player.slaapkamer_apple_tv_2:
+      name: Slaapkamer Apple TV
+      feature_list:
+        - feature: play_pause
+    media_player.samsung_tv_remote:
+      name: Samsung TV
+      feature_list:
+        - feature: on_off
+    alarm_control_panel.home_alarm:
+      code: !secret alarm_code
+    media_player.xbox_one:
+      name: Xbox One
+      feature_list: 
+        - feature: on_off
+
+#############################################################################
+#									                                        #
+#									                                        #
+# 			      Platform Config	 		                         	    #
+#									                                        #
+#									                                        #
+#############################################################################
+
+sabnzbd:
+  api_key: !secret sabnzbd_api_key
+  host: 192.168.0.34
+  name: sabnzbd
+  port: 8081
+  sensors:
+    - current_status
+    - speed
+    - queue_count
+    - queue_size
+    - queue_remaining
+    - disk_size
+    - disk_free
+    - total_size
+
+############################################################################# 
+#                                                                           #
+#                                                                           #
+#                             Custom Panels	                                #
+#                                                                           #
+#                                                                           #
+#############################################################################
+
+panel_iframe:
+  sonarr:
+    title: "Sonarr"
+    url: !secret url_2
+    icon: "mdi:television"
+  couchpotato:
+    title: "Radarr"
+    url: !secret url_3
+    icon: "mdi:sofa"
+  serveressentials:
+    title: "Windows Cloud"
+    url: !secret url_1
+    icon: "mdi:windows"
+
+panel_custom:
+  name: floorplan
+  sidebar_title: Plattegrond
+  sidebar_icon: mdi:home
+  url_path: floorplan
+  config: !include floorplan.yaml
+
+#############################################################################
+#									                                        #
+#									                                        #
+#				Other					                                    #
+#									                                        #
+#  									                                        #
+#############################################################################
+
+notify:
+  - name: ios_notifier
+    platform: group
+    services:
+      - service: ios_iphone_jimmy
+      - service: ios_iphone_van_steph
+
+calendar:
+  - platform: caldav
+    url: !secret url_4
+    username: !secret icloud_user
+    password: !secret icloud_app_specific_password
+    calendars:
+      - 'Schings'
+      - 'Jimmy'
+      - 'Stephanie'
+      - 'Holiday'
+
+tado:
+  username: !secret tado_usr
+  password: !secret tado_pwd
+
+weather:
+  - platform: darksky
+    api_key: !secret darksky
+
+shopping_list:
+
+conversation:
+
+history:
+  exclude:
+    domains:
+      - automation
+      - script
+      - updater
+      - weblink
+      - group
+
+logbook:
+
+map:
+
+custom_updater:
+  track:
+    - components
+    - cards
+  card_urls:
+    - https://raw.githubusercontent.com/kalkih/mini-media-player/master/tracker.json
+    - https://raw.githubusercontent.com/kuuji/button-card/master/tracker.json
+    - https://raw.githubusercontent.com/nervetattoo/simple-thermostat/allow-updates/tracker.json
+    - https://raw.githubusercontent.com/bramkragten/custom-ui/master/updater.json
+    - https://raw.githubusercontent.com/ljmerza/calendar-card/master/custom_updater.json
+
+input_select:
+  dishwasher_status:
+    name: Vaatwasser Status
+    options:
+      - Idle
+      - Running
+      - Drying
+      - Clean
+      - Power OFF
+    initial: Idle
+  washing_machine_status:
+    name: Wasmachine Status
+    options:
+      - Idle
+      - Running
+      - Finishing
+      - Clean
+      - Power OFF
+    initial: Idle
+  dryer_status:
+    name: Droger Status
+    options:
+      - Idle
+      - Running
+      - Finishing
+      - Clean
+      - Power OFF
+    initial: Idle
+
+lovelace:
+  mode: yaml
+
+weblink:
+  entities:
+    - name: Waze Link
+      icon: mdi:waze
+      url: https://www.waze.com/ul?ll=LATTITUDE%2CLONGITUDE&navigate=yes&zoom=16
+      
